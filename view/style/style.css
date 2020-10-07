@@ -1,0 +1,44 @@
+body{
+    background: #eee;
+    font: normal 13pt arial;
+
+}
+
+header{
+    text-align: center;
+    background: rgba(204, 204, 204, 0.356);
+    padding: 20px 0;
+}
+
+header a#inicioBtn{
+    background: #fff;
+    color: #444;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+}
+header a#inicioBtn:hover{
+    background:  rgba(93, 113, 138, 0.1);
+}
+header a#cadastrarBtn{
+    background: rgb(29, 82, 151);
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+}
+header a#cadastrarBtn:hover{
+    background: rgb(18, 61, 116);
+}
+
+section#inicioSec{
+    display: block;
+    margin: 30px;
+    background: #fff;
+    border-radius: 10px;
+    border: none;
+
+}
+section#cadastrarSec{
+    display: none;
+}
