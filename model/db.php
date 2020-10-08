@@ -30,10 +30,11 @@ class Banco{
 
     public function getFuncionario(){  
         $result = $this->mysqli->query("SELECT * FROM funcionarios");
-        while($row = $result->fetch_array(MYSQLI_ASSOC)){
+        while($row = $result->fetch_array(MYSQLI_ASSOC) ){
             $array[] = $row;
         }
-        return $array;
+        return $array;  
+
 
     }
 
@@ -45,6 +46,20 @@ class Banco{
         }
 
     }
+    public function pesquisaFuncionario($id){
+        $result = $this->mysqli->query("SELECT * FROM funcionarios WHERE id = '$id'");
+        return $result->fetch_array(MYSQLI_ASSOC);
 
+
+    }
+     public function updateFuncionario($nome,$cpf,$email,$telefone,$endereco,$cidade){
+        $stmt = $this->mysqli->prepare("UPDATE `funcionarios` SET `nome` = ?, `cpf`=?, `email`=?, `telefone`=?, `endereco`=?,`cidade` = ? WHERE `id` = ?");
+        $stmt->bind_param("sssssss",$nome,$cpf,$email,$telefone,$endereco,$cidade,$id);
+        if($stmt->execute()==TRUE){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 ?>

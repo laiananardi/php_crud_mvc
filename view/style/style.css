@@ -41,4 +41,41 @@ section#inicioSec{
 }
 section#cadastrarSec{
     display: none;
+    flex-direction: row;
+    justify-content: center;
+    margin: 30px;
+    background: #fff;
+    border-radius: 10px;
+    border: none;
 }
+
+ form, .form-group {
+    width: 900px;
+    margin: 1.5rem auto;
+    width: 350px;
+    text-align: center;
+}
+
+input{
+    
+    border-radius: 10px!important;
+    margin-top: 10px;
+}
+
+button{
+    background: rgb(46, 99, 168);
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px !important;
+    border: none;
+}
+button:hover{
+    background: rgba(18, 60, 116, 0.897);
+}
+
+
+/* section#editarSec{
+    display: block;
+    background: red;
+} */

@@ -35,22 +35,23 @@
         </table>
     </section>
     <section id="cadastrarSec">
-    <div class="row">
-        <form method="post" action="../controller/cadastro.php" id="form" name="form" onsubmit="validar(document.form); return false;" class="col-10">
-            <div class="form-group">
-                <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required>
-                <input class="form-control" type="number" id="cpf" name="cpf" placeholder="CPF" required>
-                <input class="form-control" type="email" id="email" name="email" placeholder="E-mail" required>
-                <input class="form-control" type="number" id=telefone name="telefone" placeholder="Telefone" required>
-                <input class="form-control" type="text" id="endereco" name="endereco" placeholder="Endereço" required>
-                <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Cidade" required>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-success" id="cadastrar">Cadastrar</button>
-            </div>
-        </form>
-    </div>
+        <div class="row">
+            <form method="post" action="../controller/cadastro.php" id="form-cadastro" name="form" onsubmit="validar(document.form); return false;" >
+                <div class="form-group">
+                    <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required>
+                    <input class="form-control" type="number" id="cpf" name="cpf" placeholder="CPF" required>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="E-mail" required>
+                    <input class="form-control" type="number" id=telefone name="telefone" placeholder="Telefone" required>
+                    <input class="form-control" type="text" id="endereco" name="endereco" placeholder="Endereço" required>
+                    <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Cidade" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn " id="cadastrar">Cadastrar</button>
+                </div>
+            </form>
+        </div>
     </section>
+    
 <script src="style/script.js"></script>
 </body>
 </html>

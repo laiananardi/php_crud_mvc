@@ -4,12 +4,12 @@ const inicioSec = document.querySelector('#inicioSec')
 const cadastrarSec = document.querySelector('#cadastrarSec')
 
 inicioBtn.onclick = function(){
-    inicioSec.style.display = "block"
+    inicioSec.style.display = "flex"
     cadastrarSec.style.display = "none"
 }
 cadastrarBtn.onclick = function(){
     inicioSec.style.display = "none"
-    cadastrarSec.style.display = "block"
+    cadastrarSec.style.display = "flex"
 }
 
 

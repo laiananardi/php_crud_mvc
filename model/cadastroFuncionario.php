@@ -3,6 +3,7 @@ require_once("db.php");
 
 class Cadastro extends Banco {
 
+    private $id;
     private $nome;
     private $cpf;
     private $email;
@@ -34,7 +35,7 @@ class Cadastro extends Banco {
     }
     //Metodos Get
     public function getId(){
-        return $this->nome;
+        return $this->id;
     }
     public function getNome(){
         return $this->nome;
