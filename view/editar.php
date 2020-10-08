@@ -9,7 +9,7 @@
 
         <div class="row">
         <?php require_once("../controller/ControllerEditar.php");?>
-            <form method="post" action="../controller/controllerEditar.php" id="form" name="form" onsubmit="validar(document.form); return false;" class="col-10">
+            <form method="post" action="../controller/controllerEditar.php?id=<?php print($_GET['id']); ?>" id="form" name="form" onsubmit="validar(document.form); return false;" class="col-10">
                 <div class="form-group">
                     <input class="form-control" type="text" id="nome" name="nome" value="<?php echo $editar->getNome(); ?>" required autofocus >
                     <input class="form-control" type="number" id="cpf" name="cpf" value="<?php echo $editar->getCpf(); ?>" required >
@@ -19,10 +19,10 @@
                     <input class="form-control" type="text" id="cidade" name="cidade" value="<?php echo $editar->getCidade(); ?>" required >
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="number" name="id" value="<?php echo $editar->getId();?>">
+                    <input class="form-control" type="hidden" name="id" value="<?php echo $editar->getId();?>">
                     <button type="submit" class="btn btn-success" id="editar" name="submit" value="editar">Editar</button>
                 </div>
-            </form>
+            </form>=
         </div>
  
     <script src="style/script.js"></script>

@@ -33,7 +33,9 @@ class Banco{
         while($row = $result->fetch_array(MYSQLI_ASSOC) ){
             $array[] = $row;
         }
-        return $array;  
+        if(!empty($array)){
+            return $array; 
+        }
 
 
     }

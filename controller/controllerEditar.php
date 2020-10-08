@@ -16,7 +16,7 @@ class editarController {
         $this->editar = new Banco();
         $this->criarFormulario($id);
     }
-    private function criarFormulario($id){
+    public function criarFormulario($id){
         $row = $this->editar->pesquisaFuncionario($id);
         
         $this->nome         =$row['nome'];
@@ -30,10 +30,11 @@ class editarController {
 
     }
     public function editarFormulario($nome,$cpf,$email,$telefone,$endereco,$cidade,$id){
-        if($this->editar->updateFuncionario($nome,$cpf,$email,$telefone,$endereco,$cidade,$id) == TRUE){
-            echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php</script>";
-        }else{
+        if($this->editar->updateFuncionario($nome,$cpf,$email,$telefone,$endereco,$cidade,$id) == FALSE){
             echo "<script>alert('Erro ao gravar registro!');history.back()</script>";
+        }else{
+            echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php'</script>";
+            
         }
     }
     public function getId(){
