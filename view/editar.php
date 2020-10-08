@@ -19,7 +19,7 @@
                     <input class="form-control" type="text" id="cidade" name="cidade" value="<?php echo $editar->getCidade(); ?>" required >
                 </div>
                 <div class="form-group">
-                    <!-- <input type="hidden" name="id" value="<?php //echo $editar->getId();?>"> -->
+                    <input class="form-control" type="number" name="id" value="<?php echo $editar->getId();?>">
                     <button type="submit" class="btn btn-success" id="editar" name="submit" value="editar">Editar</button>
                 </div>
             </form>

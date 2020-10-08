@@ -52,7 +52,7 @@ class Banco{
 
 
     }
-     public function updateFuncionario($nome,$cpf,$email,$telefone,$endereco,$cidade){
+     public function updateFuncionario($nome,$cpf,$email,$telefone,$endereco,$cidade,$id){
         $stmt = $this->mysqli->prepare("UPDATE `funcionarios` SET `nome` = ?, `cpf`=?, `email`=?, `telefone`=?, `endereco`=?,`cidade` = ? WHERE `id` = ?");
         $stmt->bind_param("sssssss",$nome,$cpf,$email,$telefone,$endereco,$cidade,$id);
         if($stmt->execute()==TRUE){

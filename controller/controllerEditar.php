@@ -10,6 +10,7 @@ class editarController {
     private $telefone;
     private $endereco;
     private $cidade;
+    private $id;
 
     public function __construct($id){
         $this->editar = new Banco();
@@ -24,19 +25,20 @@ class editarController {
         $this->telefone     =$row['telefone'];
         $this->endereco     =$row['endereco'];
         $this->cidade       =$row['cidade'];
+        $this->id           =$row['id'];
         
 
     }
-    public function editarFormulario($nome,$cpf,$email,$telefone,$endereco,$cidade){
-        if($this->editar->updateFuncionario($nome,$cpf,$email,$telefone,$endereco,$cidade) == TRUE){
-            echo "<script>alert('Registro incluído com sucesso!')</script>";
+    public function editarFormulario($nome,$cpf,$email,$telefone,$endereco,$cidade,$id){
+        if($this->editar->updateFuncionario($nome,$cpf,$email,$telefone,$endereco,$cidade,$id) == TRUE){
+            echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php</script>";
         }else{
             echo "<script>alert('Erro ao gravar registro!');history.back()</script>";
         }
     }
-    // public function getId(){
-    //     return $this->id;
-    // }
+    public function getId(){
+        return $this->id;
+    } 
     public function getNome(){
         return $this->nome;
     }
@@ -61,6 +63,6 @@ class editarController {
 $id = filter_input(INPUT_GET, 'id');
 $editar = new editarController($id);
 if(isset($_POST['submit'])){
-    $editar->editarFormulario($_POST['nome'],$_POST['cpf'],$_POST['email'],$_POST['telefone'],$_POST['endereco'],$_POST['cidade']);
+    $editar->editarFormulario($_POST['nome'],$_POST['cpf'],$_POST['email'],$_POST['telefone'],$_POST['endereco'],$_POST['cidade'],$_POST['id']  );
 }
 ?>
