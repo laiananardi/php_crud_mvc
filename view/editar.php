@@ -3,10 +3,10 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>CRUD</title>
 <body>
-
+    <section id="editarSec">
         <div class="row">
         <?php require_once("../controller/ControllerEditar.php");?>
             <form method="post" action="../controller/controllerEditar.php?id=<?php print($_GET['id']); ?>" id="form" name="form" onsubmit="validar(document.form); return false;" class="col-10">
@@ -20,12 +20,13 @@
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="hidden" name="id" value="<?php echo $editar->getId();?>">
-                    <button type="submit" class="btn btn-success" id="editar" name="submit" value="editar">Editar</button>
+                    <button type="submit" class="btn " id="editar" name="submit" value="editar">Editar</button>
                 </div>
-            </form>=
+            </form>
         </div>
+    </section>
  
-    <script src="style/script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

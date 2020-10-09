@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="style.css">
     <title>CRUD</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
                     <th>Telefone</th>
                     <th>Endereço</th>
                     <th>Cidade</th>
-                    <th>Foto</th>
+                    <th>acções</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,6 +53,6 @@
         </div>
     </section>
     
-<script src="style/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

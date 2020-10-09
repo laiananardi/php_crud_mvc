@@ -3,6 +3,7 @@ const cadastrarBtn = document.querySelector('#cadastrarBtn')
 const inicioSec = document.querySelector('#inicioSec')
 const cadastrarSec = document.querySelector('#cadastrarSec')
 
+
 inicioBtn.onclick = function(){
     inicioSec.style.display = "flex"
     cadastrarSec.style.display = "none"

@@ -21,7 +21,7 @@ class listarController{
                 echo "<td>".$value['telefone'] ."</td>";
                 echo "<td>".$value['endereco'] ."</td>";
                 echo "<td>".$value['cidade']."</td>";
-                echo "<td><a class='btn btn-warning' href='editar.php?id=".$value['id']."'>Editar</a><a class='btn btn-danger' href='../controller/deletar.php?id=".$value['id']."'>Excluir</a></td>";
+                echo "<td id='acao'><a href='editar.php?id=".$value['id']."'><i id='edit' class='far fa-edit'></i></a><a href='../controller/deletar.php?id=".$value['id']."'><i id='trash' class='far fa-trash-alt delete'></i></a></td>";
                 echo "</tr>";
             }
         }

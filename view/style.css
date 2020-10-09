@@ -31,6 +31,7 @@ header a#cadastrarBtn:hover{
     background: rgb(18, 61, 116);
 }
 
+
 section#inicioSec{
     display: block;
     margin: 30px;
@@ -49,6 +50,15 @@ section#cadastrarSec{
     border: none;
 }
 
+section#editarSec{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 30px;
+    background: #fff;
+    border-radius: 10px;
+    border: none;
+}
  form, .form-group {
     width: 900px;
     margin: 1.5rem auto;
@@ -74,8 +84,33 @@ button:hover{
     background: rgba(18, 60, 116, 0.897);
 }
 
+.table td#acao{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 
-/* section#editarSec{
-    display: block;
-    background: red;
-} */
+ i#trash {
+    font-size: 20px;
+    color: rgb(139, 8, 34);
+    float: right;
+    cursor: pointer;
+}
+ i#trash:hover{
+    color: rgb(209, 49, 81);
+}
+
+ i#edit{
+    font-size: 20px;
+    color: rgb(15, 143, 68);
+    float: right;
+    padding-right: 15px;
+    cursor: pointer;
+} 
+
+i#edit:hover{
+    color: rgb(49, 209, 116);
+}
+.table td, .table th {
+    text-align: center;
+}
