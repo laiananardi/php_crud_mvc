@@ -3,7 +3,11 @@ require_once("db.php");
 
 class Cadastro extends Banco {
 
+
+    
+
     private $id;
+    private $foto;
     private $nome;
     private $cpf;
     private $email;
@@ -14,6 +18,9 @@ class Cadastro extends Banco {
     //Metodos Set
     public function setId($string){
         $this->id = $string;
+    }
+    public function setFoto($string){
+        $this->foto = $string;
     }
     public function setNome($string){
         $this->nome = $string;
@@ -36,6 +43,9 @@ class Cadastro extends Banco {
     //Metodos Get
     public function getId(){
         return $this->id;
+    }
+    public function getFoto(){
+        return $this->foto;
     }
     public function getNome(){
         return $this->nome;

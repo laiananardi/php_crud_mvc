@@ -70,6 +70,7 @@ input{
     
     border-radius: 10px!important;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 button{
@@ -110,6 +111,18 @@ button:hover{
 
 i#edit:hover{
     color: rgb(49, 209, 116);
+}
+i#plus {
+    color: #2ab1f0;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+i#plus:hover{
+    color: #1565c0;
+}
+a#plusBtn{
+    color: #495057 ;
 }
 .table td, .table th {
     text-align: center;

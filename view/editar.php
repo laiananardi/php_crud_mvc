@@ -9,8 +9,9 @@
     <section id="editarSec">
         <div class="row">
         <?php require_once("../controller/ControllerEditar.php");?>
-            <form method="post" action="../controller/controllerEditar.php?id=<?php print($_GET['id']); ?>" id="form" name="form" onsubmit="validar(document.form); return false;" class="col-10">
+            <form method="post" action="../controller/controllerEditar.php?id=<?php print($_GET['id']); ?>" id="form" name="form" enctype="multipart/form-data">
                 <div class="form-group">
+                    <input class="form-control" type="file" name="foto" value="<?php echo $editar->getFoto(); ?>" accept="jpg|jpeg|gif|bmp|png|tiff|svg">
                     <input class="form-control" type="text" id="nome" name="nome" value="<?php echo $editar->getNome(); ?>" required autofocus >
                     <input class="form-control" type="number" id="cpf" name="cpf" value="<?php echo $editar->getCpf(); ?>" required >
                     <input class="form-control" type="email" id="email" name="email" value="<?php echo $editar->getEmail(); ?>" required >

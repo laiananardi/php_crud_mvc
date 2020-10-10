@@ -15,6 +15,7 @@ class listarController{
         if (is_array($row) || is_object($row)){
             foreach ($row as $value){
                 echo "<tr>";
+                echo "<th><img src='../arquivos/".$value['foto']."'  height='40px' ></th>";
                 echo "<th>".$value['nome'] ."</th>";
                 echo "<td>".$value['cpf'] ."</td>";
                 echo "<td>".$value['email'] ."</td>";

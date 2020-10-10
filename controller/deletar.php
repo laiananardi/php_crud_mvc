@@ -14,3 +14,7 @@ class deletar {
 }
 new deletar($_GET['id']);
 ?>
+
+     
+
+  

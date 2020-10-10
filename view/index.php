@@ -20,6 +20,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Foto</th>
                     <th>Nome</th>
                     <th>CPF</th>
                     <th>E-mail</th>
@@ -37,12 +38,13 @@
     </section>
     <section id="cadastrarSec">
         <div class="row">
-            <form method="post" action="../controller/cadastro.php" id="form-cadastro" name="form" onsubmit="validar(document.form); return false;" >
+            <form method="post" action="../controller/cadastro.php" id="form-cadastro" name="form" enctype="multipart/form-data" >
                 <div class="form-group">
+                    <input class="form-control" type="file" name="foto" accept="jpg|jpeg|gif|bmp|png|tiff|svg">
                     <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required>
                     <input class="form-control" type="number" id="cpf" name="cpf" placeholder="CPF" required>
                     <input class="form-control" type="email" id="email" name="email" placeholder="E-mail" required>
-                    <input class="form-control" type="number" id=telefone name="telefone" placeholder="Telefone" required>
+                    <a class="btn" id="plusBtn">Adicionar telefone<i id="plus" class="fas fa-plus"></i></a>
                     <input class="form-control" type="text" id="endereco" name="endereco" placeholder="Endereço" required>
                     <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Cidade" required>
                 </div>

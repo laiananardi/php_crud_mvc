@@ -4,6 +4,7 @@ require_once("../model/db.php");
 class editarController {
 
     private $editar;
+    private $foto;
     private $nome;
     private $cpf;
     private $email;
@@ -19,6 +20,7 @@ class editarController {
     public function criarFormulario($id){
         $row = $this->editar->pesquisaFuncionario($id);
         
+        $this->foto         =$row['foto'];
         $this->nome         =$row['nome'];
         $this->cpf          =$row['cpf'];
         $this->email        =$row['email'];
@@ -33,6 +35,7 @@ class editarController {
         if($this->editar->updateFuncionario($nome,$cpf,$email,$telefone,$endereco,$cidade,$id) == FALSE){
             echo "<script>alert('Erro ao gravar registro!');history.back()</script>";
         }else{
+        
             echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php'</script>";
             
         }
@@ -40,6 +43,9 @@ class editarController {
     public function getId(){
         return $this->id;
     } 
+    public function getFoto(){
+        return $this->foto;
+    }
     public function getNome(){
         return $this->nome;
     }
