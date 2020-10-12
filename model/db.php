@@ -31,59 +31,85 @@ class Banco{
         $stmt->bind_param("ssssss",$nome_foto,$nome,$cpf,$email,$endereco,$cidade);
        
         if( $stmt->execute() == TRUE){
-            return true ;
+            $result = $this->mysqli->query("SELECT * FROM funcionarios");
+            $row = $result->fetch_array(MYSQLI_ASSOC); 
+
+            $result = $this->mysqli->query("SELECT id FROM funcionarios WHERE id = $row[id]");
+            var_dump($row[id]);
+
+            return id ;
+
         }else{
+
             return false;
+
         }
 
     }
 
     public function setFuncionarioTel($telefone){
+        
+        // $result = $this->mysqli->query("SELECT * FROM funcionarios");
+        // $row = $result->fetch_array(MYSQLI_ASSOC); 
+
+        // $result = $this->mysqli->query("SELECT id FROM funcionarios WHERE id = $id");
+
+        // var_dump($telefone);
+        // var_dump($id);
 
         for($i=0;$i < count($telefone);$i++){
             
+            // var_dump($telefone[$i]);
             
-            var_dump($telefone[$i]);
-            
-                $stmt = $this->mysqli->prepare("INSERT INTO telefones ( `telefone`) VALUES (?)");
-                $stmt->bind_param("s",$telefone[$i]);
-                if( $stmt->execute() == TRUE){
-                    return true ;
-                }
-            
-        
-                
+            $stmt = $this->mysqli->prepare("INSERT INTO telefones ( `telefone`) VALUES (?)");
+            $stmt->bind_param("s",$telefone[$i]);
+            $stmt->execute();
+             
         }
 
-            
+        $stmt->close();   
         
     }
     
 
     public function getFuncionario(){  
+
         $result = $this->mysqli->query("SELECT * FROM funcionarios");
+
         while($row = $result->fetch_array(MYSQLI_ASSOC) ){
+
             $array[] = $row;
+
         }
         if(!empty($array)){
+
             return $array; 
+
         }
 
 
     }
 
     public function deleteFuncionario($id){
+
         $location = "../arquivos/"; 
         $result = $this->mysqli->query("SELECT foto FROM funcionarios WHERE id = $id");
         $foto = mysqli_fetch_object($result);
         $imagemQueVaiDeletada = $location . $foto->foto; 
         $deleta = unlink($imagemQueVaiDeletada);
+
         if($deleta){
+
             $this->mysqli->query("DELETE FROM tabela WHERE id = $id"); 
+
             if($this->mysqli->query("DELETE FROM `funcionarios` WHERE `id` = '".$id."';")== TRUE){
+                
                 return true;
-            }else{
+
+            } else{
+
                 return false;
+
             }
         }
         
