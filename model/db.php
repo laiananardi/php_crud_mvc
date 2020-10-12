@@ -17,7 +17,7 @@ class Banco{
         $this->mysqli = new mysqli(BD_SERVIDOR, BD_USUARIO , BD_SENHA, BD_BANCO);
     }
 
-    public function setFuncionario($nome,$cpf,$email,$telefone,$endereco,$cidade){
+    public function setFuncionario($nome,$cpf,$email,$endereco,$cidade){
 
         if (isset($_FILES['foto'])){
             $nome_foto = $_FILES['foto']['name'];
@@ -27,8 +27,8 @@ class Banco{
             move_uploaded_file($tmp_name,$location);
         }
         
-        $stmt = $this->mysqli->prepare("INSERT INTO funcionarios ( `foto`,`nome`, `cpf`, `email`, `telefone`, `endereco`,`cidade`) VALUES (?,?,?,?,?,?,?)");
-        $stmt->bind_param("sssssss",$nome_foto,$nome,$cpf,$email,$telefone,$endereco,$cidade);
+        $stmt = $this->mysqli->prepare("INSERT INTO funcionarios ( `foto`,`nome`, `cpf`, `email`, `endereco`,`cidade`) VALUES (?,?,?,?,?,?)");
+        $stmt->bind_param("ssssss",$nome_foto,$nome,$cpf,$email,$endereco,$cidade);
        
         if( $stmt->execute() == TRUE){
             return true ;
@@ -37,6 +37,28 @@ class Banco{
         }
 
     }
+
+    public function setFuncionarioTel($telefone){
+
+        for($i=0;$i < count($telefone);$i++){
+            
+            
+            var_dump($telefone[$i]);
+            
+                $stmt = $this->mysqli->prepare("INSERT INTO telefones ( `telefone`) VALUES (?)");
+                $stmt->bind_param("s",$telefone[$i]);
+                if( $stmt->execute() == TRUE){
+                    return true ;
+                }
+            
+        
+                
+        }
+
+            
+        
+    }
+    
 
     public function getFuncionario(){  
         $result = $this->mysqli->query("SELECT * FROM funcionarios");

@@ -31,8 +31,8 @@ class Cadastro extends Banco {
     public function setEmail($string){
         $this->email = $string;
     }
-    public function setTelefone($string){
-        $this->telefone = $string;
+    public function setTelefone($array){
+        $this->telefone = $array;
     }
     public function setEndereco($string){
         $this->endereco = $string;
@@ -68,7 +68,10 @@ class Cadastro extends Banco {
 
 
     public function incluir(){
-        return $this->setFuncionario($this->getNome(),$this->getCpf(),$this->getEmail(),$this->getTelefone(),$this->getEndereco(),$this->getCidade());
+        return $this->setFuncionario($this->getNome(),$this->getCpf(),$this->getEmail(),$this->getEndereco(),$this->getCidade());
+    }
+    public function incluirTel(){
+        return $this->setFuncionarioTel($this->getTelefone());
     }
 }
 ?>
