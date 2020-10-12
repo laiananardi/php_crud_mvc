@@ -17,14 +17,7 @@ class Banco{
         $this->mysqli = new mysqli(BD_SERVIDOR, BD_USUARIO , BD_SENHA, BD_BANCO);
     }
 
-    public $tel= [];
-
-    public function setTelefone($telefone){
-        $this->tel = $telefone ;
-
-    }
-
-    public function setFuncionario($nome,$cpf,$email,$endereco,$cidade){
+    public function setFuncionario($nome,$cpf,$email,$endereco,$cidade,$telefone){
 
         if (isset($_FILES['foto'])){
             $nome_foto = $_FILES['foto']['name'];
@@ -39,7 +32,6 @@ class Banco{
        
         if( $stmt->execute() == TRUE){
             
-            
             $last_id = $stmt->insert_id;
 
 
@@ -47,13 +39,12 @@ class Banco{
             // printf($last_id);
             // $this->tel;
             // printf($this->tel);
-            for($i=0;$i < count($tel);$i++){
+            for($i=0;$i < count($telefone);$i++){
             
                 // var_dump($telefone[$i]);
                 
-                
-                $stmt = $this->mysqli->prepare("INSERT INTO telefones (`telefone`) VALUES (?)");
-                $stmt->bind_param("s",$tel[$i]);
+                $stmt = $this->mysqli->prepare("INSERT INTO telefones(`telefone`, `id`) VALUES (?,?)");
+                $stmt->bind_param("ss",$telefone[$i], $last_id);
                 $stmt->execute();
                  
             }
@@ -62,7 +53,7 @@ class Banco{
             
             
 
-            return $last_id ;
+            return $last_id;
 
         }else{
 

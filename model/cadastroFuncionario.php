@@ -68,10 +68,7 @@ class Cadastro extends Banco {
 
 
     public function incluir(){
-        return $this->setFuncionario($this->getNome(),$this->getCpf(),$this->getEmail(),$this->getEndereco(),$this->getCidade());
-    }
-    public function incluirTel(){
-        return $this->setTelefone($this->getTelefone());
+        return $this->setFuncionario($this->getNome(),$this->getCpf(),$this->getEmail(),$this->getEndereco(),$this->getCidade(), $this->getTelefone());
     }
 }
 ?>
