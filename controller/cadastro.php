@@ -34,7 +34,6 @@ class cadastroController{
     }
     public function incluirTel(){
 
-        
         $this->cadastro->setTelefone($_POST['telefone']);
 
          $resultTel = $this->cadastro->incluirTel();

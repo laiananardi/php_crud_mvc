@@ -17,6 +17,13 @@ class Banco{
         $this->mysqli = new mysqli(BD_SERVIDOR, BD_USUARIO , BD_SENHA, BD_BANCO);
     }
 
+    public $tel= [];
+
+    public function setTelefone($telefone){
+        $this->tel = $telefone ;
+
+    }
+
     public function setFuncionario($nome,$cpf,$email,$endereco,$cidade){
 
         if (isset($_FILES['foto'])){
@@ -31,45 +38,59 @@ class Banco{
         $stmt->bind_param("ssssss",$nome_foto,$nome,$cpf,$email,$endereco,$cidade);
        
         if( $stmt->execute() == TRUE){
-            $result = $this->mysqli->query("SELECT * FROM funcionarios");
-            $row = $result->fetch_array(MYSQLI_ASSOC); 
+            
+            
+            $last_id = $stmt->insert_id;
 
-            $result = $this->mysqli->query("SELECT id FROM funcionarios WHERE id = $row[id]");
-            var_dump($row[id]);
 
-            return id ;
+            // printf($this->tel);
+            // printf($last_id);
+            // $this->tel;
+            // printf($this->tel);
+            for($i=0;$i < count($tel);$i++){
+            
+                // var_dump($telefone[$i]);
+                
+                
+                $stmt = $this->mysqli->prepare("INSERT INTO telefones (`telefone`) VALUES (?)");
+                $stmt->bind_param("s",$tel[$i]);
+                $stmt->execute();
+                 
+            }
+    
+            $stmt->close(); 
+            
+            
+
+            return $last_id ;
 
         }else{
 
             return false;
 
         }
-
+       
     }
 
-    public function setFuncionarioTel($telefone){
+    // public function setFuncionarioTel($telefone){
         
-        // $result = $this->mysqli->query("SELECT * FROM funcionarios");
-        // $row = $result->fetch_array(MYSQLI_ASSOC); 
+       
+     
 
-        // $result = $this->mysqli->query("SELECT id FROM funcionarios WHERE id = $id");
-
-        // var_dump($telefone);
-        // var_dump($id);
-
-        for($i=0;$i < count($telefone);$i++){
+    //     for($i=0;$i < count($telefone);$i++){
             
-            // var_dump($telefone[$i]);
+    //         // var_dump($telefone[$i]);
             
-            $stmt = $this->mysqli->prepare("INSERT INTO telefones ( `telefone`) VALUES (?)");
-            $stmt->bind_param("s",$telefone[$i]);
-            $stmt->execute();
+            
+    //         $stmt = $this->mysqli->prepare("INSERT INTO telefones (`telefone`) VALUES (?)");
+    //         $stmt->bind_param("s",$telefone[$i]);
+    //         $stmt->execute();
              
-        }
+    //     }
 
-        $stmt->close();   
+    //     $stmt->close();   
         
-    }
+    // }
     
 
     public function getFuncionario(){  
