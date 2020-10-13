@@ -127,8 +127,8 @@ class Banco{
 
 
     }
-     public function updateFuncionario($nome,$cpf,$email,$endereco,$cidade,$id,$telefone){
-        print_r($telefone);
+     public function updateFuncionario($nome,$cpf,$email,$endereco,$cidade,$id){
+       
         if (isset($_FILES['foto'])){
             $nome_foto = $_FILES['foto']['name'];
             $tmp_name = $_FILES['foto']['tmp_name'];
@@ -142,15 +142,15 @@ class Banco{
         if($stmt->execute()==TRUE){
 
             
-            for($i=0;$i < count($telefone);$i++){
+            // for($i=0;$i < count($telefone);$i++){
                 
-                $stmt = $this->mysqli->prepare("UPDATE `telefones` SET `telefone`=?, `id`=? ");
-                $stmt->bind_param("ss",$telefone[$i], $id);
-                $stmt->execute();
+            //     $stmt = $this->mysqli->prepare("UPDATE `telefones` SET `telefone`=?, `id`=? ");
+            //     $stmt->bind_param("ss",$telefone[$i], $id);
+            //     $stmt->execute();
                  
-            }
+            // }
     
-            $stmt->close(); 
+            // $stmt->close(); 
 
             return true;
 

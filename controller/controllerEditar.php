@@ -36,12 +36,12 @@ class editarController {
         $this->id           =$row['id'];
 
     }
-    public function editarFormulario($nome,$cpf,$email,$endereco,$cidade,$id,$telefone){
-        if($this->editar->updateFuncionario($nome,$cpf,$email,$endereco,$cidade,$id,$telefone) == FALSE){
+    public function editarFormulario($nome,$cpf,$email,$endereco,$cidade,$id){
+        if($this->editar->updateFuncionario($nome,$cpf,$email,$endereco,$cidade,$id) == FALSE){
             echo "<script>alert('Erro ao gravar registro!');history.back()</script>";
         }else{
         
-            echo "<script>alert('Registro incluído com sucesso!')";
+            echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php'";
             
         }
     }
@@ -75,6 +75,6 @@ class editarController {
 $id = filter_input(INPUT_GET, 'id');
 $editar = new editarController($id);
 if(isset($_POST['submit'])){
-    $editar->editarFormulario($_POST['nome'],$_POST['cpf'],$_POST['email'],$_POST['endereco'],$_POST['cidade'],$_POST['id'],$_POST['telefone']  );
+    $editar->editarFormulario($_POST['nome'],$_POST['cpf'],$_POST['email'],$_POST['endereco'],$_POST['cidade'],$_POST['id']  );
 }
 ?>
