@@ -40,11 +40,12 @@
         <div class="row">
             <form method="post" action="../controller/cadastro.php" id="form-cadastro" name="form" enctype="multipart/form-data" >
                 <div class="form-group">
-                    <input class="form-control" type="file" name="foto" accept="jpg|jpeg|gif|bmp|png|tiff|svg">
+                    <input class="form-control" type="file" name="foto" accept="jpg|jpeg|gif|bmp|png|tiff|svg" required>
                     <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required>
                     <input class="form-control" type="number" id="cpf" name="cpf" placeholder="CPF" required>
                     <input class="form-control" type="email" id="email" name="email" placeholder="E-mail" required>
                     <a class="btn" id="plusBtn">Adicionar telefone<i id="plus" class="fas fa-plus"></i></a>
+                    <input class="form-control" type="number" id="telefone0" name="telefone[]" placeholder="Telefone" required>
                     <input class="form-control" type="text" id="endereco" name="endereco" placeholder="Endereço" required>
                     <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Cidade" required>
                 </div>

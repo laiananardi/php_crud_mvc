@@ -18,13 +18,27 @@ class Banco{
     }
 
     public function setFuncionario($nome,$cpf,$email,$endereco,$cidade,$telefone){
+        
 
         if (isset($_FILES['foto'])){
+
+            $result = $this->mysqli->query("SELECT foto FROM funcionarios");
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+
             $nome_foto = $_FILES['foto']['name'];
             $tmp_name = $_FILES['foto']['tmp_name'];
-            $location = '../arquivos/'. $_FILES['foto']['name'];;
-        
-            move_uploaded_file($tmp_name,$location);
+            $location = '../arquivos/'. $_FILES['foto']['name'];
+
+            if($row['foto'] == $nome_foto){
+
+                return false;
+
+            } else{
+
+                move_uploaded_file($tmp_name,$location);
+
+            }
+           
         }
         
         $stmt = $this->mysqli->prepare("INSERT INTO funcionarios ( `foto`,`nome`, `cpf`, `email`, `endereco`,`cidade`) VALUES (?,?,?,?,?,?)");
@@ -35,13 +49,7 @@ class Banco{
             $last_id = $stmt->insert_id;
 
 
-            // printf($this->tel);
-            // printf($last_id);
-            // $this->tel;
-            // printf($this->tel);
             for($i=0;$i < count($telefone);$i++){
-            
-                // var_dump($telefone[$i]);
                 
                 $stmt = $this->mysqli->prepare("INSERT INTO telefones(`telefone`, `id`) VALUES (?,?)");
                 $stmt->bind_param("ss",$telefone[$i], $last_id);
@@ -50,8 +58,6 @@ class Banco{
             }
     
             $stmt->close(); 
-            
-            
 
             return $last_id;
 
@@ -62,27 +68,6 @@ class Banco{
         }
        
     }
-
-    // public function setFuncionarioTel($telefone){
-        
-       
-     
-
-    //     for($i=0;$i < count($telefone);$i++){
-            
-    //         // var_dump($telefone[$i]);
-            
-            
-    //         $stmt = $this->mysqli->prepare("INSERT INTO telefones (`telefone`) VALUES (?)");
-    //         $stmt->bind_param("s",$telefone[$i]);
-    //         $stmt->execute();
-             
-    //     }
-
-    //     $stmt->close();   
-        
-    // }
-    
 
     public function getFuncionario(){  
 
@@ -101,6 +86,11 @@ class Banco{
 
 
     }
+    public function getTelefones($id){
+        $result = $this->mysqli->query("SELECT id_t, id, telefone FROM telefones WHERE id = $id");
+        
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     public function deleteFuncionario($id){
 
@@ -115,14 +105,18 @@ class Banco{
             $this->mysqli->query("DELETE FROM tabela WHERE id = $id"); 
 
             if($this->mysqli->query("DELETE FROM `funcionarios` WHERE `id` = '".$id."';")== TRUE){
-                
-                return true;
+                if($this->mysqli->query("DELETE FROM `telefones` WHERE `id` = '".$id."';")== TRUE){
+                    return true;
+                }
+              
 
             } else{
 
                 return false;
 
             }
+        }else{
+            return false;
         }
         
 

@@ -28,7 +28,7 @@ class cadastroController{
         if($resultFun >= 1){
             echo "<script>alert('Funcionário registrado com sucesso!');document.location='../view/index.php'</script>";
         }else{
-            echo "<script>alert('Erro salvar funcionário!');history.back()</script>";
+            echo "<script>alert('Não foi possivel salvar funcionário! verifique se o funcionário não está sendo repetido.');history.back()</script>";
         }
          
     }

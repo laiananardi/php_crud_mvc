@@ -24,7 +24,7 @@ class editarController {
         $this->nome         =$row['nome'];
         $this->cpf          =$row['cpf'];
         $this->email        =$row['email'];
-        $this->telefone     =$row['telefone'];
+        // $this->telefone     =$row['telefone'];
         $this->endereco     =$row['endereco'];
         $this->cidade       =$row['cidade'];
         $this->id           =$row['id'];
