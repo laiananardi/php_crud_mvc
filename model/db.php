@@ -127,7 +127,8 @@ class Banco{
 
 
     }
-     public function updateFuncionario($nome,$cpf,$email,$telefone,$endereco,$cidade,$id){
+     public function updateFuncionario($nome,$cpf,$email,$endereco,$cidade,$id,$telefone){
+        print_r($telefone);
         if (isset($_FILES['foto'])){
             $nome_foto = $_FILES['foto']['name'];
             $tmp_name = $_FILES['foto']['tmp_name'];
@@ -135,10 +136,24 @@ class Banco{
         
             move_uploaded_file($tmp_name,$location);
         }
-        $stmt = $this->mysqli->prepare("UPDATE `funcionarios` SET `foto` = ?,`nome` = ?, `cpf`=?, `email`=?, `telefone`=?, `endereco`=?,`cidade` = ? WHERE `id` = ?");
-        $stmt->bind_param("ssssssss",$nome_foto,$nome,$cpf,$email,$telefone,$endereco,$cidade,$id);
+
+        $stmt = $this->mysqli->prepare("UPDATE `funcionarios` SET `foto` = ?,`nome` = ?, `cpf`=?, `email`=?, `endereco`=?,`cidade` = ? WHERE `id` = ?");
+        $stmt->bind_param("sssssss",$nome_foto,$nome,$cpf,$email,$endereco,$cidade,$id);
         if($stmt->execute()==TRUE){
+
+            
+            for($i=0;$i < count($telefone);$i++){
+                
+                $stmt = $this->mysqli->prepare("UPDATE `telefones` SET `telefone`=?, `id`=? ");
+                $stmt->bind_param("ss",$telefone[$i], $id);
+                $stmt->execute();
+                 
+            }
+    
+            $stmt->close(); 
+
             return true;
+
         }else{
             return false;
         }
