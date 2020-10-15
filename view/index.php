@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <link rel="stylesheet" href="view/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>CRUD</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
 
     </header>
     <section id="inicioSec">
-    <?php require_once("controller/listar.php");?>
+    <?php require_once("../controller/listar.php");?>
         <table class="table">
             <thead>
                 <tr>
@@ -38,7 +38,7 @@
     </section>
     <section id="cadastrarSec">
         <div class="row">
-            <form method="post" action="controller/cadastro.php" id="form-cadastro" name="form" enctype="multipart/form-data" >
+            <form method="post" action="../controller/cadastro.php" id="form-cadastro" name="form" enctype="multipart/form-data" >
                 <div class="form-group">
                     <input class="form-control" type="file" name="foto" accept="jpg|jpeg|gif|bmp|png|tiff|svg" required>
                     <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required>
@@ -56,6 +56,6 @@
         </div>
     </section>
     
-<script src="view/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

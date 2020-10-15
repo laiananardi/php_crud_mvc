@@ -1,7 +1,7 @@
 <?php
 
 
-require_once("../model/cadastroFuncionario.php");
+require_once("C:/xampp/htdocs/php_crud_mvc/model/db.php");
 
 
 class cadastroController{
