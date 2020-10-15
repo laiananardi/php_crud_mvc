@@ -9,7 +9,6 @@
     <section id="editarSec">
         <div class="row">
         <?php require_once("../controller/ControllerEditar.php");?>
-        <?php require_once("../model/db.php");?>
             <form method="post" action="../controller/controllerEditar.php?id=<?php print($_GET['id']); ?>" id="form" name="form" enctype="multipart/form-data">
                 <div class="form-group">
                     <input class="form-control" type="file" name="foto" value="<?php echo $editar->getFoto(); ?>" accept="jpg|jpeg|gif|bmp|png|tiff|svg" required>
@@ -24,6 +23,15 @@
                                                 
                 
                         // }
+                        $id = $editar->getId();
+                        $editar->telefones($id);
+
+                        foreach( $editar->telefones($id) as $telefone){ 
+           
+                            print "<input class='form-control' type='number' id='telefone' name='telefone[]' value = '".$telefone['telefone'] ."'></input>";
+                            
+                
+                        }
                     ?>
                     <input class="form-control" type="text" id="endereco" name="endereco" value="<?php echo $editar->getEndereco(); ?>" required >
                     <input class="form-control" type="text" id="cidade" name="cidade" value="<?php echo $editar->getCidade(); ?>" required >

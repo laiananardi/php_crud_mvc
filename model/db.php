@@ -127,8 +127,8 @@ class Banco{
 
 
     }
-     public function updateFuncionario($nome,$cpf,$email,$endereco,$cidade,$id){
-       
+     public function updateFuncionario($nome,$cpf,$email,$endereco,$cidade,$id,$telefone){
+   
         if (isset($_FILES['foto'])){
             $nome_foto = $_FILES['foto']['name'];
             $tmp_name = $_FILES['foto']['tmp_name'];
@@ -139,18 +139,31 @@ class Banco{
 
         $stmt = $this->mysqli->prepare("UPDATE `funcionarios` SET `foto` = ?,`nome` = ?, `cpf`=?, `email`=?, `endereco`=?,`cidade` = ? WHERE `id` = ?");
         $stmt->bind_param("sssssss",$nome_foto,$nome,$cpf,$email,$endereco,$cidade,$id);
+
+       
         if($stmt->execute()==TRUE){
 
+            $result = $this->mysqli->query("SELECT id_t, id, telefone FROM telefones WHERE id = $id");
+            $result->fetch_all(MYSQLI_ASSOC);
+
+            $id_tel = array();
+
+            foreach( $result as $id_t){ 
+
+            array_push($id_tel, $id_t['id_t']);
             
-            // for($i=0;$i < count($telefone);$i++){
-                
-            //     $stmt = $this->mysqli->prepare("UPDATE `telefones` SET `telefone`=?, `id`=? ");
-            //     $stmt->bind_param("ss",$telefone[$i], $id);
-            //     $stmt->execute();
-                 
-            // }
-    
-            // $stmt->close(); 
+            }
+           
+            for($i=0;$i < count($telefone);$i++){
+                   
+                $stmt = $this->mysqli->prepare("UPDATE `telefones` SET `telefone`=? WHERE `id_t`=? ");
+                $stmt->bind_param("ss",$telefone[$i], $id_tel[$i]);
+
+                $stmt->execute();
+
+            }
+            
+            $stmt->close(); 
 
             return true;
 

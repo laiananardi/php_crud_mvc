@@ -12,6 +12,7 @@ class editarController {
     private $endereco;
     private $cidade;
     private $id;
+    private $id_t;
 
     public function __construct($id){
         $this->editar = new Banco();
@@ -24,30 +25,38 @@ class editarController {
         $this->nome         =$row['nome'];
         $this->cpf          =$row['cpf'];
         $this->email        =$row['email'];
-        // foreach($this->editar->getTelefones($id) as $telefone){ 
-           
-        //     print "<input class='form-control' type='number' id='telefone' name='telefone' value = '".$telefone['telefone'] ."'></input>";
-        //     $this->telefone = $telefone['telefone'];
-
-        // }
-        // $this->telefone     =$row['telefone'];
         $this->endereco     =$row['endereco'];
         $this->cidade       =$row['cidade'];
         $this->id           =$row['id'];
 
     }
-    public function editarFormulario($nome,$cpf,$email,$endereco,$cidade,$id){
-        if($this->editar->updateFuncionario($nome,$cpf,$email,$endereco,$cidade,$id) == FALSE){
+    public function telefones($id){
+        
+        $array =  $this->editar->getTelefones($id);
+
+        
+       
+
+        return $array;
+
+       
+    }
+    public function editarFormulario($nome,$cpf,$email,$endereco,$cidade,$id,$telefone){
+        if($this->editar->updateFuncionario($nome,$cpf,$email,$endereco,$cidade,$id,$telefone) == FALSE){
+            
             echo "<script>alert('Erro ao gravar registro!');history.back()</script>";
+           
         }else{
         
-            echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php'";
+            echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php'</script>";
             
         }
     }
+    
     public function getId(){
         return $this->id;
     } 
+   
     public function getFoto(){
         return $this->foto;
     }
@@ -75,6 +84,6 @@ class editarController {
 $id = filter_input(INPUT_GET, 'id');
 $editar = new editarController($id);
 if(isset($_POST['submit'])){
-    $editar->editarFormulario($_POST['nome'],$_POST['cpf'],$_POST['email'],$_POST['endereco'],$_POST['cidade'],$_POST['id']  );
+    $editar->editarFormulario($_POST['nome'],$_POST['cpf'],$_POST['email'],$_POST['endereco'],$_POST['cidade'],$_POST['id'],$_POST['telefone'] );
 }
 ?>
