@@ -48,7 +48,7 @@ class editarController {
            
         }else{
         
-            echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php'</script>";
+            echo "<script>alert('Registro incluído com sucesso!');document.location='../index.php'</script>";
             
         }
     }

@@ -6,7 +6,7 @@ class deletar {
     public function __construct($id){
         $this->deletar = new Banco();
         if($this->deletar->deleteFuncionario($id)== TRUE){
-            echo "<script>alert('Registro deletado com sucesso!');document.location='../view/index.php'</script>";
+            echo "<script>alert('Registro deletado com sucesso!');document.location='../index.php'</script>";
         }else{
             echo "<script>alert('Erro ao deletarr registro!');history.back()</script>";
         }
