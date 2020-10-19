@@ -38,7 +38,14 @@ section#inicioSec{
     background: #fff;
     border-radius: 10px;
     border: none;
+    text-align: center;
 
+}
+h1{
+    color: rgba(18, 60, 116, 0.897);
+    padding: 10px  0px;
+    font-size: 35px;
+    font-weight: 600;
 }
 section#cadastrarSec{
     display: none;
@@ -126,4 +133,16 @@ a#plusBtn{
 }
 .table td, .table th {
     text-align: center;
+}
+div .newTel{
+    display: flex;
+    align-items: center;
+}
+i#minus{
+    padding: 0px 5px;
+    color: rgb(245, 65, 65);
+    cursor: pointer;
+}
+i#minus:hover{
+    color: rgb(197, 32, 32);
 }
