@@ -1,9 +1,9 @@
 <?php
 
-define('BD_SERVIDOR','localhost');
-define('BD_USUARIO','root');
-define('BD_SENHA','');
-define('BD_BANCO','crud');
+define('BD_SERVIDOR','sql398.main-hosting.eu');
+define('BD_USUARIO','u768062362_crud');
+define('BD_SENHA',':dahgI;z1T');
+define('BD_BANCO','u768062362_crud');
 
 class Banco{
 
